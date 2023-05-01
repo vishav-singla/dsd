@@ -1,0 +1,92 @@
+﻿
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity mux_4tol is
+Port (10,11,12,13: in STD_LOGIC;
+s:in STD_LOGIC_VECTOR (1 downto 0); y: out STD_LOGIC);
+end mux_4tol;
+architecture Behavioral of mux_4tol is
+signal sbl, sb0: std_logic;
+begin
+sbl<= not s(1);
+sb0<= not s(0);
+y<= (sbl AND sb0 AND i0) OR (sbl AND s(0) AND il) OR (s(1) AND sb0 AND i2) OR (s(1) AND s(0) AND 13);
+end Behavioral;
+
+
+
+
+
+
+----------tb------------
+
+
+LIBRARY ieee;
+USE ieee.std_logic_l1164.ALL;
+
+ENTITY mux_tb IS
+END mux_tb;
+
+ARCHITECTURE behavior OF mux_tb IS
+
+—-— Component Declaration for the Unit Under Test (UUT)
+
+COMPONENT mux_4tol is
+Port ( 10,i1,i2,i3 : in STD_LOGIC;
+
+Vv out STD_LOGIC):
+
+end COMPONENT;
+
+—-Inputs
+
+signal
+signal
+signal
+signal
+signal
+
+io
+
+—--Outputs
+
+signal
+
+v
+
+std_logic := '0';
+std_logic or;
+std_logic or;
+
+std_logic : ‘or;
+std_logic_vector (1 downto 0)
+
+std_logic;
+
+in STD_LOGIC_VECTOR (1 downto 0);
+
+(others =>
+
+0);
+
+
+
+
+BEGIN
+--Instantiate the Unit Under Test (UUT)
+ mux_4tol PORT MAP (i0, i1, i2, i3, s, y);
+--Stimulus process
+stim_proc: process
+begin
+--hold reset state for 100 ns.
+wait for 100 ns;
+--﻿
+
+S<="00"; 13<='0'; 12<='0'; il<='0'; i0<='1'; wait for 100 ns; s<="00"; 13<='0'; 12<='0'; il<='0'; i0<='0'; wait for 100 ns;
+s<="01"; 13<='0'; 12<='0'; il<='1'; 10<='0'; wait for 100 ns; S<="01"; 13<='0'; 12<='0'; il<='0'; 10<='0'; wait for 100 ns;
+s<="10"; 13<='0'; 12<='1'; il<='0'; 10<='0'; wait for 100 ns; s<="10"; 13<='0'; 12<='0'; il<='0'; 10<='0'; wait for 100 ns;
+s<="11"; 13<='1'; 12<='0'; il<='0'; 10<='1'; wait for 100 ns; s<="11"; 13<='0'; 12<='0'; il<='0'; 10<='1'; wait for 100 ns;
+wait;
+end process;
+END;
