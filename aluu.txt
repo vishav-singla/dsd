@@ -1,0 +1,81 @@
+﻿
+
+--
+VHDL program for 4-bit ALU
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+entity ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0)); end ALU;
+architecture arch_ALU of ALU is
+begin
+process (A, B, Sel)
+begin
+if (Sel= "000") then Y<= A+B; --Addition
+elsif (Sel = "001") then Y<=A-B
+
+elsif (Sel = "010") elsif (Sel = "011") elsif (Sel "100") elsif (Sel="101") elsif (Sel = "110")
+else Y<= A XOR B; end if;
+end process; end;
+then Y<= A-B; --Subtraction then Y<= A AND B; --AND Operation then Y<= A OR B; then Y<= NOT (A); then Y<= A NAND B; then Y<= A NOR B;
+
+
+﻿
+
+--
+VHDL program for 4-bit ALU
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+entity ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0));|
+end ALU;
+architecture arch_ALU of ALU is
+begin
+process (A, B, Sel)
+begin
+if (Sel = "000") then Y<= A+B; --Addition
+elsif (Sel = "001") then Y<= A-B; --Subtraction elsif (Sel = "010") then Y<= A AND B; --AND Operation elsif (Sel="011") then Y<= A OR B; elsif (Sel = "100") then Y<= NOT (A);
+elsif (Sel = "101") then Y<= A NAND B;
+elsif (Sel = "110")
+else Y<= A XOR B;
+end if;
+end process; end;
+then Y<= A NOR B;
+
+
+
+
+﻿
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all; entity TestALU is
+end TestALU;
+architecture arc_TestALU of TestALU is component ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0));
+end component;
+signal a, b, y: std_logic_vector (3 downto 0);
+signal sel: std_logic_vector (2 downto 0);
+begin
+ALUO: ALU port map (a, b, sel, y); --ALU instantiation process
+begin
+a<= "0101"; b<= "0101"; sel<="000"; wait for 100 ns; a<="1101"; b<= "0011"; sel<="001"; wait for 100 ns; a<= "0111"; b<= "0101"; sel<="010"; wait for 100 ns; a<= "0101"; b<= "0011"; sel<="011"; wait for 100 ns; a<= "0010"; b<= "0101"; sel<="100"; wait for 100 ns; a<="1011"; b<="1000"; sel<="101"; wait for 100 ns; a<= "0111"; b<= "0101"; sel<="110"; wait for 100 ns; a<= "0011"; b<= "0100"; sel<="111"; wait for 100 ns; wait;
+end process;
+end arc_TestALU;
+
+
+
+
+
+
+
+
+
+
+
+﻿
+
