@@ -1,0 +1,489 @@
+﻿
+
+--
+VHDL program for 4-bit ALU
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+entity ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0)); end ALU;
+architecture arch_ALU of ALU is
+begin
+process (A, B, Sel)
+begin
+if (Sel= "000") then Y<= A+B; --Addition
+elsif (Sel = "001") then Y<=A-B
+
+elsif (Sel = "010") elsif (Sel = "011") elsif (Sel "100") elsif (Sel="101") elsif (Sel = "110")
+else Y<= A XOR B; end if;
+end process; end;
+then Y<= A-B; --Subtraction then Y<= A AND B; --AND Operation then Y<= A OR B; then Y<= NOT (A); then Y<= A NAND B; then Y<= A NOR B;
+
+
+﻿
+
+--
+VHDL program for 4-bit ALU
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+entity ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0));|
+end ALU;
+architecture arch_ALU of ALU is
+begin
+process (A, B, Sel)
+begin
+if (Sel = "000") then Y<= A+B; --Addition
+elsif (Sel = "001") then Y<= A-B; --Subtraction elsif (Sel = "010") then Y<= A AND B; --AND Operation elsif (Sel="011") then Y<= A OR B; elsif (Sel = "100") then Y<= NOT (A);
+elsif (Sel = "101") then Y<= A NAND B;
+elsif (Sel = "110")
+else Y<= A XOR B;
+end if;
+end process; end;
+then Y<= A NOR B;
+
+
+
+
+﻿
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all; entity TestALU is
+end TestALU;
+architecture arc_TestALU of TestALU is component ALU is
+port (A, B: in std_logic_vector (3 downto 0); Sel: in std_logic_vector (2 downto 0);
+Y: out std_logic_vector (3 downto 0));
+end component;
+signal a, b, y: std_logic_vector (3 downto 0);
+signal sel: std_logic_vector (2 downto 0);
+begin
+ALUO: ALU port map (a, b, sel, y); --ALU instantiation process
+begin
+a<= "0101"; b<= "0101"; sel<="000"; wait for 100 ns; a<="1101"; b<= "0011"; sel<="001"; wait for 100 ns; a<= "0111"; b<= "0101"; sel<="010"; wait for 100 ns; a<= "0101"; b<= "0011"; sel<="011"; wait for 100 ns; a<= "0010"; b<= "0101"; sel<="100"; wait for 100 ns; a<="1011"; b<="1000"; sel<="101"; wait for 100 ns; a<= "0111"; b<= "0101"; sel<="110"; wait for 100 ns; a<= "0011"; b<= "0100"; sel<="111"; wait for 100 ns; wait;
+end process;
+end arc_TestALU;
+
+
+
+
+
+
+
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity mux_4tol is
+Port (10,11,12,13: in STD_LOGIC;
+s:in STD_LOGIC_VECTOR (1 downto 0); y: out STD_LOGIC);
+end mux_4tol;
+architecture Behavioral of mux_4tol is
+signal sbl, sb0: std_logic;
+begin
+sbl<= not s(1);
+sb0<= not s(0);
+y<= (sbl AND sb0 AND i0) OR (sbl AND s(0) AND il) OR (s(1) AND sb0 AND i2) OR (s(1) AND s(0) AND 13);
+end Behavioral;
+
+
+
+
+
+
+----------tb------------
+
+
+LIBRARY ieee;
+USE ieee.std_logic_l1164.ALL;
+
+ENTITY mux_tb IS
+END mux_tb;
+
+ARCHITECTURE behavior OF mux_tb IS
+
+—-— Component Declaration for the Unit Under Test (UUT)
+
+COMPONENT mux_4tol is
+Port ( 10,i1,i2,i3 : in STD_LOGIC;
+
+Vv out STD_LOGIC):
+
+end COMPONENT;
+
+—-Inputs
+
+signal
+signal
+signal
+signal
+signal
+
+io
+
+—--Outputs
+
+signal
+
+v
+
+std_logic := '0';
+std_logic or;
+std_logic or;
+
+std_logic : ‘or;
+std_logic_vector (1 downto 0)
+
+std_logic;
+
+in STD_LOGIC_VECTOR (1 downto 0);
+
+(others =>
+
+0);
+
+
+
+
+BEGIN
+--Instantiate the Unit Under Test (UUT)
+ mux_4tol PORT MAP (i0, i1, i2, i3, s, y);
+--Stimulus process
+stim_proc: process
+begin
+--hold reset state for 100 ns.
+wait for 100 ns;
+--﻿
+
+S<="00"; 13<='0'; 12<='0'; il<='0'; i0<='1'; wait for 100 ns; s<="00"; 13<='0'; 12<='0'; il<='0'; i0<='0'; wait for 100 ns;
+s<="01"; 13<='0'; 12<='0'; il<='1'; 10<='0'; wait for 100 ns; S<="01"; 13<='0'; 12<='0'; il<='0'; 10<='0'; wait for 100 ns;
+s<="10"; 13<='0'; 12<='1'; il<='0'; 10<='0'; wait for 100 ns; s<="10"; 13<='0'; 12<='0'; il<='0'; 10<='0'; wait for 100 ns;
+s<="11"; 13<='1'; 12<='0'; il<='0'; 10<='1'; wait for 100 ns; s<="11"; 13<='0'; 12<='0'; il<='0'; 10<='1'; wait for 100 ns;
+wait;
+end process;
+END;
+
+
+
+
+
+
+
+
+
+
+
+Pos Edge triggered DFF
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity Dff is
+port( D, clk, clr: in std_logic; q: out std_logic);
+end dff;
+architecture dff_arch of dff is
+begin
+process (clk, clr)
+begin
+if (clk='1' AND clk'event) then
+if (clr='1') then
+q<='0'; else
+q<=d;
+end if;
+end if;
+end process; end dff_arch;
+﻿
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+entity Exp7_USR is
+port (clk, clr: in std_logic;
+d: in std_logic_vector (3 downto 0); si_rs, si_ls: in std_logic;
+sel: in std_logic_vector(1 downto 0); q: out std_logic_vector (3 downto 0));
+end Exp7_USR;
+architecture Behavioral of Exp7_USR is --component declarations
+component mux_4tol is
+Port (10,11,12,13 in STD_LOGIC;
+s in STD_LOGIC_VECTOR (1 downto 0); y out STD_LOGIC);
+end component;
+component Dff is
+port ( D, clk, clr: in std_logic;
+q: out std_logic);
+end component;
+---Signal declaration
+signal mx: std_logic_vector(3 downto 0); signal qx: std_logic_vector(3 downto 0); begin
+DFF1: dff port map (mx (3), clk, clr, qx (3)); DFF2: dff port map (mx (2), clk, clr, qx (2)); DFF3: dff port map (mx (1), clk, clr, qx (1)); DFF4: dff port map (mx (0), clk, clr, qx (0));
+Muxl: mux_4tol port map (qx (3), Mux2: mux_4tol port map (qx (2), Mux3: mux_4tol port map (qx (1), Mux4: mux_4tol port map (qx (0),
+--outputs
+q<=qx;
+end Behavioral;
+mux outputs FFS outputs
+si_rs, qx (2), d (3), sel, mx (3)); qx (3), qx (1), d (2), sel, mx (2)); qx (2), qx (0), d (1), sel, mx (1)); qx (1), si_ls, d (0), sel, mx(0));
+﻿
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ENTITY USR tb IS
+END USR_tb;
+ARCHITECTURE behavior OF USR_tb IS
+Component Declaration for the Unit Under Test (UUT)
+COMPONENT Exp7_USR
+PORT (
+clk IN std_logic;
+clr : IN std_logic;
+d: IN
+std_logic_vector (3 downto 0);
+si_rs: IN
+si_ls: IN
+std_logic;
+std_logic;
+sel IN std_logic_vector(1 downto 0);
+q: OUT std_logic_vector (3 downto 0) );
+END COMPONENT;
+--Inputs
+signal clk : std_logic := '0';
+signal clr: std_logic := '0';
+signal d std_logic_vector (3 downto 0) := (others => '0'); signal si_rs: std_logic := '0';
+signal si_ls: std_logic := '0';
+signal sel: std_logic_vector(1 downto 0) = (others => '0');
+--Outputs
+signal q: std_logic_vector (3 downto 0);
+-- Clock period definitions
+constant clk_period time := 20 ns;
+BEGIN
+--Instantiate the Unit Under Test (UUT) uut: Exp7_USR PORT MAP (
+clk => clk,
+clrclr,
+d => d,
+si rs => si_rs,
+si_ls si_ls,
+);
+sel
+q => g
+sel,
+﻿
+
+--
+Clock process definitions clk_process :process
+begin
+clk <= '0';
+wait for clk_period/2; clk <= '1';
+wait for clk_period/2;
+end process;
+stim_proc: process
+begin
+--
+hold reset state for 100 ns.
+wait for 20 ns;
+--
+test inputs
+clr<= '1'; sel<="00"; wait for 50 ns;
+clr<= '0'; sel<="00";
+sel<="11";
+d<="1001";
+si_ls<='1'; si_rs<='0'; wait for 50 ns; sel<="01"; d<="0000"; si_ls<='1'; si_rs<='0'; wait for 150 ns; sel<="10"; d<="0000"; si_ls<='1'; si_rs<='0'; wait for 150 ns; sel<="00"; d<="0000"; si_ls<='1'; si_rs<='0'; wait for 50 ns;
+wait;
+end process;
+END;
+
+
+
+
+
+
+
+
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity fsm is
+    Port ( clk,rst,x : in  STD_LOGIC;
+           z : out  STD_LOGIC);
+end fsm;
+
+architecture Behavioral of fsm is
+type mealy_state is (s0,s1,s2);
+signal reg_ps,reg_ns:mealy_state;
+
+begin
+
+ process(rst,clk)
+  begin
+    if (rst='1') then
+	   reg_ps<=s0;
+	elsif(clk'event and clk='1') then
+	 reg_ps<=reg_ns;
+	 end if;
+	end process;
+	
+ process(x,reg_ps)
+  begin 
+   case reg_ps is
+	 when s0=>
+	  if(x='0') then
+	    reg_ns<=s1;
+		 else
+		 reg_ns<=s2;
+		 end if;
+		 
+	 when s1=>
+	  if(x='0') then
+	    reg_ns<=s1;
+		 else
+		 reg_ns<=s2;
+		 end if;
+	 when s2=>
+	  if(x='0') then
+	    reg_ns<=s1;
+		 else
+		 reg_ns<=s2;
+		 end if;    
+  when others=>
+    reg_ns<=s0;
+ end case;
+end process;
+
+ process(x,reg_ps)
+   begin
+	 case reg_ps is
+	 
+	  when s1=>
+	   if(x='0') then
+		  z<='0';
+		  else
+		  z<='1';
+		end if;
+	  when s2=>
+	   if(x='0') then
+		  z<='1';
+		  else
+		  z<='0';
+      end if;
+   when others=>
+     z<='0';
+  end case;
+ end process;
+end Behavioral;
+--------------------------------------------------------------------------------
+-- Company: 
+-- Engineer:
+--
+-- Create Date:   12:02:10 04/05/2023
+-- Design Name:   
+-- Module Name:   C:/Users/student/fsm/fsm_tb.vhd
+-- Project Name:  fsm
+-- Target Device:  
+-- Tool versions:  
+-- Description:   
+-- 
+-- VHDL Test Bench Created by ISE for module: fsm
+-- 
+-- Dependencies:
+-- 
+-- Revision:
+-- Revision 0.01 - File Created
+-- Additional Comments:
+--
+-- Notes: 
+-- This testbench has been automatically generated using types std_logic and
+-- std_logic_vector for the ports of the unit under test.  Xilinx recommends
+-- that these types always be used for the top-level I/O of a design in order
+-- to guarantee that the testbench will bind correctly to the post-implementation 
+-- simulation model.
+--------------------------------------------------------------------------------
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+ 
+ENTITY fsm_tb IS
+END fsm_tb;
+ 
+ARCHITECTURE behavior OF fsm_tb IS 
+ 
+    -- Component Declaration for the Unit Under Test (UUT)
+ 
+    COMPONENT fsm
+    PORT(
+         clk : IN  std_logic;
+         rst : IN  std_logic;
+         x : IN  std_logic;
+         z : OUT  std_logic
+        );
+    END COMPONENT;
+    
+
+   --Inputs
+   signal clk : std_logic := '0';
+   signal rst : std_logic := '0';
+   signal x : std_logic := '0';
+
+ 	--Outputs
+   signal z : std_logic;
+
+   -- Clock period definitions
+   constant clk_period : time := 10 ns;
+ 
+BEGIN
+ 
+	-- Instantiate the Unit Under Test (UUT)
+   uut: fsm PORT MAP (
+          clk => clk,
+          rst => rst,
+          x => x,
+          z => z
+        );
+
+   -- Clock process definitions
+   clk_process :process
+   begin
+		clk <= '0';
+		wait for clk_period/2;
+		clk <= '1';
+		wait for clk_period/2;
+   end process;
+ 
+
+   -- Stimulus process
+   stim_proc: process
+   begin		
+     rst<='1'; wait for 5 ns;
+	  rst<='0';
+	  
+	  x<='0'; wait until falling_edge(clk);
+	  x<='0'; wait until falling_edge(clk);
+	  x<='1'; wait until falling_edge(clk);
+	  x<='1'; wait until falling_edge(clk);
+	  x<='0'; wait until falling_edge(clk);
+	  x<='1'; wait until falling_edge(clk);
+	  x<='0'; wait until falling_edge(clk);
+	  x<='0'; wait until falling_edge(clk);
+	  x<='1'; wait until falling_edge(clk);
+	  x<='0'; wait until falling_edge(clk);
+      wait;
+   end process;
+
+END;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+﻿
+
